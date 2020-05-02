@@ -18,7 +18,7 @@ class EditorScreen(Screen):
     foreground_color = ColorProperty((1, 1, 1, 1))
     background_color = ColorProperty((0.2, 0.2, 0.2, 1))
 
-    font_size = NumericProperty(12.5)
+    font_size = NumericProperty(15)
 
 
 class Editor(CodeInput):
