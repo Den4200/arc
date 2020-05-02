@@ -1,0 +1,36 @@
+#:kivy 1.11.1
+
+<EditorScreen>:
+    editor: editor
+    recycler: recycler
+
+    BoxLayout:
+
+        RecycleView:
+            effect_cls: "ScrollEffect"
+            viewclass: 'Editor'
+            id: recycler
+
+            Editor:
+                id: editor
+                root: root
+
+                font_size: 12
+                foreground_color: root.foreground_color
+                background_color: root.background_color
+                height: max(self.parent.height, self.minimum_height)
+                size_hint_y: None
+
+                style_name: 'monokai'
+
+                canvas.before:
+                    Color:
+                        rgba:
+                            (1,1,1,1) if self.focus and not self._cursor_blink else (0, 0, 0, 0)
+
+                    Rectangle:
+                        pos: self._cursor_visual_pos
+                        size: self.cursor_width, -self._cursor_visual_height
+    
+                    Color:
+                        rgba: self.disabled_foreground_color if self.disabled else (self.hint_text_color if not self.text else self.foreground_color)
