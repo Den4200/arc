@@ -72,11 +72,11 @@ class TerminalInput(TextInput):
         self.prompt()
 
     def keyboard_on_key_down(
-            self,
-            window: Keyboard,
-            keycode: Tuple[int, str],
-            text: str,
-            modifiers: ObservableList
+        self,
+        window: Keyboard,
+        keycode: Tuple[int, str],
+        text: str,
+        modifiers: ObservableList
     ) -> Union[None, bool]:
         """
         Captures specific key presses
@@ -104,10 +104,7 @@ class TerminalInput(TextInput):
             window, keycode, text, modifiers
         )
 
-    def _run_cmd(
-            self, cmd: str,
-            *args: Any, **kwargs: Any
-    ) -> None:
+    def _run_cmd(self, cmd: str, *args: Any, **kwargs: Any) -> None:
         """
         Checks OS for posix and
         executes commands.
@@ -121,9 +118,7 @@ class TerminalInput(TextInput):
         cmds = shlex.split(str(cmd), posix=posix_)
         self.shell.run_cmd(cmds)
 
-    def validate_cursor_pos(
-            self, *args: Any, **kwargs: Any
-    ) -> None:
+    def validate_cursor_pos(self, *args: Any, **kwargs: Any) -> None:
         if self.cursor_index() < self._cursor_pos:
             self.cursor = self.get_cursor_from_index(
                 self._cursor_pos

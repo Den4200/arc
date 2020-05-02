@@ -14,9 +14,11 @@ class Shell(EventDispatcher):
 
     @threaded
     def run_cmd(
-            self, cmd: List[str],
-            show_output: bool = True,
-            *args: Any, **kwargs: Any
+        self,
+        cmd: List[str],
+        show_output: bool = True,
+        *args: Any,
+        **kwargs: Any
     ) -> None:
         """
         Runs a command inputted into the terminal
