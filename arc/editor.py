@@ -8,6 +8,8 @@ from kivy.properties import (
 from kivy.uix.codeinput import CodeInput
 from kivy.uix.screenmanager import Screen
 
+from arc.terminal import Terminal  # NOQA: F401
+
 Builder.load_file('arc/editor.kv')
 
 

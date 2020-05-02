@@ -1,0 +1,32 @@
+#:kivy 1.11.1
+
+<Terminal>:
+    terminal_input: terminal_input
+    recycle_view: recycle_view
+
+    RecycleView:
+        id: recycle_view
+        effect_cls: 'ScrollEffect'
+        viewclass: 'TerminalInput'
+        
+        TerminalInput:
+            id: terminal_input
+            shell: root
+
+            font_size: root.font_size
+            foreground_color: root.foreground_color
+            background_color: root.background_color
+            height: max(self.parent.height, self.minimum_height)
+            size_hint_y: None
+
+            canvas.before:
+                Color:
+                    rgba:
+                        (1,1,1,1) if self.focus and not self._cursor_blink else (0, 0, 0, 0)
+
+                Rectangle:
+                    pos: self._cursor_visual_pos
+                    size: self.cursor_width, -self._cursor_visual_height
+
+                Color:
+                    rgba: self.disabled_foreground_color if self.disabled else (self.hint_text_color if not self.text else self.foreground_color)
