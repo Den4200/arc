@@ -3,7 +3,7 @@ from typing import Any
 from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import ScreenManager, NoTransition
 
 from arc.editor import EditorScreen
 
@@ -16,6 +16,7 @@ class Manager(ScreenManager):
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
+        self.transition = NoTransition()
 
         self.add_widget(EditorScreen())
 
